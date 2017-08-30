@@ -1,0 +1,68 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>User Management</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Tables</a>
+            </li>
+            <li class="active">
+                <strong>FooTable</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5 style="padding-right:10px;">User List</h5>
+                    <i class="fa fa-plus" style="cursor: pointer;font-size: large;" ng-click="user.openUserModal()" title="添加新用户"></i>
+                </div>
+                <div class="ibox-content">
+                    <input type="text" class="form-control input-sm m-b-xs" id="filter"
+                           placeholder="Search in table">
+
+                    <table class="footable table table-stripped" data-page-size="10"
+                           data-filter=#filter ng-init="user.getUserList()" >
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th data-sort-ignore="true">Password</th>
+                            <th data-sort-ignore="true">Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat='usr in user.userList' foo-repeat-done>
+                            <td>{{usr.id}}</td>
+                            <td>{{usr.userName}}</td>
+                            <td>{{usr.password}}</td>
+                            <td>
+                                <i class="fa fa-edit" style="cursor: pointer" ng-click="user.openUserModal(usr.userName)" title="编辑"></i>
+                                &nbsp;
+                                <i class="fa fa-trash-o" style="cursor: pointer" ng-click="user.deleteUser(usr.userName)" title="删除"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <ul class="pagination pull-left"></ul>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <button ng-click="user.testException()">Test Exception</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
